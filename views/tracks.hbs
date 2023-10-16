@@ -1,0 +1,23 @@
+<div>
+  <div id="track-header">
+
+    <p>Title</p>
+    <p>Listen</p>
+  </div>
+
+  <div>
+
+    {{#each trackList}}
+      <figure class="track">
+
+        <figcaption class="title"> {{this.name}} </figcaption>
+
+        <audio class="listen" controls src="{{this.url}}">
+          <a  href="{{this.url}}"> Download audio </a>
+        </audio>
+
+      </figure>
+
+    {{/each}}
+  </div>
+</div>

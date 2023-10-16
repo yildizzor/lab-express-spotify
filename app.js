@@ -70,6 +70,19 @@ app.get("/albums/:artistId", (req, res, next) => {
     .catch((error) => console.error(error));
 });
 
+app.get("/tracks/:albumId", (req, res, next) => {
+  spotifyApi
+    .getAlbumTracks(req.params.albumId)
+    .then((data) => {
+      const trackList = data.body.items.map((element) => {
+        return { name: element.name, url: element.preview_url };
+      });
+
+      res.render("tracks", { trackList });
+    })
+    .catch((error) => console.error(error));
+});
+
 app.listen(3000, () =>
   console.log("My Spotify project running on port 3000 🎧 🥁 🎸 🔊")
 );
